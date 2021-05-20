@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "my-kanban-hdc": {
+      "hosting": {
+        "my-kanban": [
+          "my-kanban-hdc"
+        ]
+      }
+    }
+  }
+}
