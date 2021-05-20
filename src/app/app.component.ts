@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { TaskDialogComponent, TaskDialogResult } from './task-dialog/task-dialog.component';
 import { Task } from './task/task';
 
@@ -20,6 +21,11 @@ const getObservable = (collection: AngularFirestoreCollection<Task>) => {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  // // Because: https://developers.google.com/codelabs/building-a-web-app-with-angular-and-firebase?utm_source=google-io21&utm_medium=referral&utm_campaign=io21-resources#11
+  // todo = this.store.collection('todo').valueChanges({ idField: 'id' }).pipe(tap((val) => { console.log(val); })) as Observable<Task[]>;
+  // inProgress = this.store.collection('inProgress').valueChanges({ idField: 'id' }) as Observable<Task[]>;
+  // done = this.store.collection('done').valueChanges({ idField: 'id' }) as Observable<Task[]>;
 
   todo: Observable<Task[]> = getObservable(this.store.collection('todo')) as Observable<Task[]>;
   inProgress: Observable<Task[]> = getObservable(this.store.collection('inProgress')) as Observable<Task[]>;
